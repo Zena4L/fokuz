@@ -11,23 +11,21 @@ import java.util.UUID;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-@Table(name = "redirect_urls")
-public class RedirectUrl {
+public class Scopes {
 
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
     private UUID id;
 
-    private String url;
-
+    private String scope;
 
     @ManyToOne
     private Client client;
 
-    public static RedirectUrl from(String url, Client c) {
-        RedirectUrl redirectUrl = new RedirectUrl();
-        redirectUrl.setUrl(url);
-        redirectUrl.setClient(c);
-        return redirectUrl;
+    public static Scopes from(String scope, Client c) {
+        Scopes scopes = new Scopes();
+        scopes.setScope(scope);
+        scopes.setClient(c);
+        return scopes;
     }
 }

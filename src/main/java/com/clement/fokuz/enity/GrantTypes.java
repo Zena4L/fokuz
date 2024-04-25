@@ -1,10 +1,17 @@
 package com.clement.fokuz.enity;
 
 import jakarta.persistence.*;
+import lombok.*;
+import org.springframework.security.oauth2.core.AuthorizationGrantType;
 
 import java.util.UUID;
 
 @Entity
+@Getter
+@Setter
+@Builder
+@AllArgsConstructor
+@NoArgsConstructor
 @Table(name = "grant_types")
 public class GrantTypes {
 
@@ -17,4 +24,12 @@ public class GrantTypes {
 
     @ManyToOne
     private Client client;
+
+    public static GrantTypes from(AuthorizationGrantType authorizationGrantType, Client client) {
+        GrantTypes c = new GrantTypes();
+        c.setGrantType(authorizationGrantType.getValue());
+        c.setClient(client);
+
+        return c;
+    }
 }
