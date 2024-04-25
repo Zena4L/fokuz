@@ -60,7 +60,7 @@ public class ProjectConfig {
                 })
         );
         http.authorizeHttpRequests(
-                auth -> auth.requestMatchers("/api/v1/auth/login").permitAll()
+                auth -> auth.requestMatchers("/api/v1/auth/**").permitAll()
                         .requestMatchers("/swagger-ui.html", "/swagger-ui/**", "/v3/api-docs/**")
                         .permitAll()
                         .requestMatchers("/.well-known/openid-configuration").permitAll()

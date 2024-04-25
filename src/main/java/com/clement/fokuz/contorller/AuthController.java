@@ -31,6 +31,6 @@ public record AuthController(UserService userService) {
             @ApiResponse(responseCode = "401", description = "Authentication failed",
                     content = @Content)})
     public SignupResponseDto signup(@RequestBody SignupRequestDto request) {
-        return null;
+        return userService.signup(request);
     }
 }

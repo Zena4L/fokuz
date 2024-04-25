@@ -1,33 +1,31 @@
-package com.clement.fokuz.enity;
+package com.clement.fokuz.entity;
+
 
 import jakarta.persistence.*;
-import lombok.*;
-
-import java.util.UUID;
+import lombok.Getter;
+import lombok.Setter;
 
 @Entity
+@Table(name = "redirect_urls")
 @Getter
 @Setter
-@Builder
-@AllArgsConstructor
-@NoArgsConstructor
-@Table(name = "redirect_urls")
 public class RedirectUrl {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.UUID)
-    private UUID id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int id;
 
     private String url;
-
 
     @ManyToOne
     private Client client;
 
     public static RedirectUrl from(String url, Client c) {
         RedirectUrl redirectUrl = new RedirectUrl();
+
         redirectUrl.setUrl(url);
         redirectUrl.setClient(c);
+
         return redirectUrl;
     }
 }
